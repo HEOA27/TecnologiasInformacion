@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+       <title>BarraProgreso</title> 
+       <meta charset="utf-8">
+       <style type="text/css" >
+       body, #parra1  {
+           margin: 0;
+           padding: 0;
+           background: #f2f2f2;
+           font-family: Arial Narrow;
+           color: #000;
+           font-size: 40px;
+           animation: BGcolorChanging-3colors 10s linear infinite alternate both;
+       }
+       @keyframes BGcolorChanging-3colors{
+           0% {
+               background: #ead519;
+           }
+           20%{
+               background: #cc85f5;
+           }
+           40% {
+               background: #02db88af;
+           }
+           
+       }
+    </style>
+    <script type="text/javascript">
+    function fill_bar(){
+        var barra = document.getElementById("bar")
+        barra.value += 10;
+        if (barra.value ==100){
+                backgroundColor = "#f2f2f2"; 
+                document.getElementById("parra1").body.style.backgroundColor="#f2f2f2";
+        }
+    }
+    function restart(){
+        var barra = document.getElementById("bar")
+        barra.value =0;
+    }
+    let colors=["blue","white"];
+       function change(){
+        let random=Math.floor(Math.random()*colors.length);
+        console.log("Ramdom value: " + random );
+        let x=document.getElementById("container").style.background = colors[random];
+    }
+        
+    </script> 
+    </head>
+ <!----   <body onload="change()">-->
+       <body>
+        <p>Barra de Progreso</p>
+        <div id="container" class="container">
+            <progress value=0 max=100 id="bar" class="progressbar" ></progress>
+            <br><input type="button" value="Avanzar" id="fillbar" onclick="fill_bar()"/>
+            <input type="button" value="Reiniciar" id="restart" onclick="restart()"/></br>
+
+        </div>
+   
+       <!---- <script src="script.js"></script>-->
+    </body>
+    </html>
